@@ -53,15 +53,24 @@ dependencies {
 
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //okhttp3
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference-ktx:1.2.0'
 
     // JSON Parsing
-    implementation 'com.google.code.gson:gson:2.10'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.google.code.gson:gson:$retrofit_version"
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    def coroutines_version = "1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
@@ -95,6 +104,7 @@ dependencies {
     implementation 'com.github.muratozturk5:ClickShrinkEffectLibrary:1.2.0'
 
     //Hilt
+    
     implementation 'com.google.dagger:hilt-android:2.44'
     kapt 'com.google.dagger:hilt-compiler:2.44'
     kapt 'com.google.dagger:hilt-android-compiler:2.44'
