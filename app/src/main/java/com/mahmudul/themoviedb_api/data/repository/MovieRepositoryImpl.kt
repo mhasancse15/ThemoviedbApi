@@ -23,10 +23,10 @@ class MovieRepositoryImpl(
         }
     }
 
-    override fun getMovieDetails(apiKey: String) = flow {
+    override fun getMovieDetails(movieId: String, apiKey: String) = flow {
         emit(Resource.Loading)
         try {
-            val response = remoteDataSource.getMovieDetails(apiKey)
+            val response = remoteDataSource.getMovieDetails(movieId, apiKey)
             emit(Resource.Success(response))
         } catch (t: Throwable) {
             emit(Resource.Error(t))

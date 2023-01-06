@@ -11,14 +11,25 @@
         android:label="fragment_generate_image"
         tools:layout="@layout/fragment_movie" >
 
+        <action
+            android:id="@+id/action_movieFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
     </fragment>
-<!--    <dialog
-        android:id="@+id/imageDetailFragment"
-        android:name="com.muratozturk.openai_dall_e_2.presentation.image_detail.ImageDetailFragment"
-        android:label="fragment_image_detail"
-        tools:layout="@layout/fragment_image_detail" >
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.mahmudul.themoviedb_api.presentation.movie_details.MovieDetailsFragment"
+        android:label="Movie Details"
+        tools:layout="@layout/fragment_movie_details">
         <argument
-            android:name="url"
-            app:argType="string" />
-    </dialog>-->
+            android:name="movie_id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
 </navigation>

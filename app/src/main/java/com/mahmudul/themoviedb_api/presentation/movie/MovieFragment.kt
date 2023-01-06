@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mahmudul.themoviedb_api.R
@@ -32,6 +34,12 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         super.onViewCreated(view, savedInstanceState)
 
         initViewCollect()
+        moviePagingDataAdapter.setOnItemClickListener {
+            findNavController().navigate(
+                R.id.action_movieFragment_to_movieDetailsFragment,
+                bundleOf("movie_id" to it.id.toString())
+            )
+        }
     }
 
     private fun initViewCollect() {
@@ -83,7 +91,5 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
             }
         }
-
     }
-
 }

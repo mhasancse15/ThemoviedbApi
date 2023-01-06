@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
     fun getTopRatedMovies(apiKey: String, language: String, page: Int): Flow<Resource<MovieResponse>>
-    fun getMovieDetails(apiKey: String): Flow<Resource<MovieDetailsResponse>>
+    fun getMovieDetails(movieId: String, apiKey: String): Flow<Resource<MovieDetailsResponse>>
 }

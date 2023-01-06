@@ -5,5 +5,5 @@ import com.mahmudul.themoviedb_api.data.model.movie_details.MovieDetailsResponse
 
 interface RemoteDataSource {
     suspend fun getTopRatedMovies(apiKey: String, language: String, page: Int): MovieResponse
-    suspend fun getMovieDetails(apiKey: String): MovieDetailsResponse
+    suspend fun getMovieDetails(movieId: String, apiKey: String): MovieDetailsResponse
 }

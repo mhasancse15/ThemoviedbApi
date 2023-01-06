@@ -3,6 +3,7 @@ package com.mahmudul.themoviedb_api.data.source
 import com.mahmudul.themoviedb_api.data.model.movie.MovieResponse
 import com.mahmudul.themoviedb_api.data.model.movie_details.MovieDetailsResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {
@@ -16,8 +17,9 @@ interface MovieService {
     ): MovieResponse
 
     //GET Movie Details
-    @GET("3/movie/550")
+    @GET("3/movie/{movieId}")
     suspend fun getMovieDetails(
-        @Query("api_key") apiKey: String
+        @Path("movieId") movieId: String,
+        @Query("api_key") apiKey: String,
     ): MovieDetailsResponse
 }
