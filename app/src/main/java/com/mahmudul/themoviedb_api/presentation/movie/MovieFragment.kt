@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mahmudul.themoviedb_api.R
 import com.mahmudul.themoviedb_api.common.Constants
 import com.mahmudul.themoviedb_api.common.Resource
+import com.mahmudul.themoviedb_api.data.model.movie.Movie
 import com.mahmudul.themoviedb_api.databinding.FragmentMovieBinding
 import com.mahmudul.themoviedb_api.domain.adapter.MoviePagingDataAdapter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Response
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -54,8 +56,24 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 movieRecyclerView.layoutManager
 
 
-                getTopRatedMovies(Constants.TOKEN, "en-US", 1)
-                viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+               //getTopRatedMovies(Constants.TOKEN, "en-US")
+                lifecycleScope.launchWhenStarted {
+                    getTopRatedMovies(Constants.TOKEN,"en-US")
+                    state.collect{state->
+                        state.let {
+                            if (it != null) {
+                                moviePagingDataAdapter.submitData(
+                                    lifecycle,it
+                                )
+                            }
+                        }
+
+                    }
+                }
+
+
+
+                /*viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                     state.collect { response ->
                         when (response) {
                             is Resource.Loading -> {
@@ -88,7 +106,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                             }
                         }
                     }
-                }
+                }*/
             }
         }
     }
