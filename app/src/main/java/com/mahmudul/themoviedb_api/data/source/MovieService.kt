@@ -1,6 +1,6 @@
 package com.mahmudul.themoviedb_api.data.source
 
-import com.mahmudul.themoviedb_api.data.model.movie.MovieResponse
+import com.mahmudul.themoviedb_api.data.source.dto.MovieResultDto
 import com.mahmudul.themoviedb_api.data.model.movie_details.MovieDetailsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,7 +14,7 @@ interface MovieService {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int
-    ): MovieResponse
+    ): MovieResultDto
 
     //GET Movie Details
     @GET("3/movie/{movieId}")

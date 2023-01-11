@@ -117,4 +117,8 @@ dependencies {
     //Coil
     implementation("io.coil-kt:coil:2.2.2")
     implementation("com.github.Commit451.coil-transformations:transformations:1.0.0")
+
+
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
